@@ -1,8 +1,8 @@
 ### Introduction
 
-**Tonca** est un **Framework PHP** basé sur le model **MVC** (**M**odel **V**iew **C**ontroller).
+**Tonka** est un **Framework PHP** basé sur le model **MVC** (**M**odel **V**iew **C**ontroller).
 
-Il ne s'agit pas d'une réinventer de la roue, ni d'apporter une quelconque amériolation aux Frameworks existants. Mais plutôt la naissance de **Tonca** est partie d'un constat. Une abstraction énorme et organisée est entrain de gagner le terrain dans le monde du développement. Pour le simple fait que les développeur adorent plus l'esthétique du code jusqu'à en perdre sa valeur.
+Il ne s'agit pas d'une réinventer de la roue, ni d'apporter une quelconque amériolation aux Frameworks existants. Mais plutôt la naissance de **Tonka** est partie d'un constat. Une abstraction énorme et organisée est entrain de gagner le terrain dans le monde du développement. Pour le simple fait que les développeur adorent plus l'esthétique du code jusqu'à en perdre sa valeur.
 
 Les Frameworks sont devneus les maîtres d'orchestre et les développeurs dansent à leur rythme. La roue tourne à l'inverse, ce qui ne devrait pas être le cas ! C'est le code qui écrit le développeur ou bien c'est le développeur qui écrit le code ? Posons nous cette question.
 

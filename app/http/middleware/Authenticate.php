@@ -7,11 +7,14 @@ class Authenticate extends Middleware
 {
     function handler()
     {
-        return routes_path( '/webauth.php' );
+        // Register a handler
     }
 
-    function authorize()
+    function authorize() 
     {
+        /**
+         * Always authorize
+         */
         return true;
     }
 }

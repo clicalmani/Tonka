@@ -1,12 +1,14 @@
 <?php
 namespace App\Providers;
 
-use Clicalmani\Flesco\Auth\UserAuth;
+use Clicalmani\Flesco\Auth\Authenticate;
 use Clicalmani\Flesco\Database\DB;
 
-class User extends UserAuth
+class AuthServiceProvider extends Authenticate
 {
-    function __construct()
+	protected $db;
+
+    function __construct( $user_id = null )
     {
         // TODO
     }
@@ -15,7 +17,8 @@ class User extends UserAuth
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetExists()
 	 */
-	function offsetExists($username){ 
+	function offsetExists(mixed $username) : bool
+	{ 
 		// TODO
 	}
 	 
@@ -23,7 +26,8 @@ class User extends UserAuth
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetGet()
 	 */
-	function offsetGet($username){ 
+	function offsetGet(mixed $username) : mixed
+	{ 
 		// TODO
 	}
 	 
@@ -31,7 +35,9 @@ class User extends UserAuth
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetSet()
 	 */
-	function offsetSet($username, $new_status){
+	#[\ReturnTypeWillChange]
+	function offsetSet(mixed $username, mixed $new_status) : int
+	{
 		// TODO
 	}
 	 
@@ -39,7 +45,9 @@ class User extends UserAuth
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetUnset()
 	 */
-	function offsetUnset($username){
+	#[\ReturnTypeWillChange]
+	function offsetUnset($username) : int
+	{
 		// TODO
 	}
 }
