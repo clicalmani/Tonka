@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Clicalmani\Flesco\Http\Controllers\RequestController as Controller;
 use Clicalmani\Flesco\Http\Requests\Request;
-use Clicalmani\Flesco\Ressources\Views\View;
+use Clicalmani\Flesco\Resources\Views\View;
 
 class AppController extends Controller
 {
@@ -24,7 +24,9 @@ class AppController extends Controller
 
     function login(Request $request)
     {
-        return View::render('login');
+        return View::render('login', [
+            'csrf' => csrf()
+        ]);
     }
 
     function auth(Request $request)
