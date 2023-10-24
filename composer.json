@@ -1,7 +1,7 @@
 {
     "require": {
         "clicalmani/flesco": ">=1.0",
-        "clicalmani/xpower": ">=2.3.0",
+        "clicalmani/xpower": ">=1.2.0",
         "clicalmani/container": ">=1.0",
         "clicalmani/console": ">=1.0",
         "clicalmani/database": ">=1.0",

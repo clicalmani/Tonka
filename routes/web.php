@@ -11,3 +11,7 @@ use Clicalmani\Routes\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', function() {
+    return view('home', ['name' => 'Enter your name']);
+});

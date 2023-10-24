@@ -29,6 +29,11 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Service handler
+     * 
+     * @return void
+     */
     public function handler(): void
     {
         ServiceProvider::responseHandler(fn(mixed $user) => [
