@@ -22,5 +22,7 @@
             "name": "clicalmani",
             "email": "clicalmani@gmail.com"
         }
-    ]
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": false
 }
