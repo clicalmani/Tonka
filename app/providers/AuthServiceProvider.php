@@ -2,52 +2,56 @@
 namespace App\Providers;
 
 use Clicalmani\Flesco\Auth\Authenticate;
-use Clicalmani\Flesco\Database\DB;
+use Clicalmani\Database\DB;
 
 class AuthServiceProvider extends Authenticate
 {
+	/**
+	 * Database instance
+	 * 
+	 * @var \Clicalmani\Database\DBQuery
+	 */
 	protected $db;
 
-    function __construct( $user_id = null )
+    public function __construct(mixed $user_id = null)
     {
-        // TODO
+        parent::__construct( $user_id );
+		$this->db = DB::getInstance();
     }
 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetExists()
 	 */
-	function offsetExists(mixed $username) : bool
+	public function offsetExists(mixed $matricule) : bool
 	{ 
-		// TODO
+		return true;
 	}
 	 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetGet()
 	 */
-	function offsetGet(mixed $username) : mixed
+	public function offsetGet(mixed $username) : mixed
 	{ 
-		// TODO
+		//
 	}
 	 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetSet()
 	 */
-	#[\ReturnTypeWillChange]
-	function offsetSet(mixed $username, mixed $new_status) : int
+	public function offsetSet(mixed $username, mixed $new_status) : void
 	{
-		// TODO
+		//
 	}
 	 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetUnset()
 	 */
-	#[\ReturnTypeWillChange]
-	function offsetUnset($username) : int
+	public function offsetUnset($username) : void
 	{
-		// TODO
+		//
 	}
 }
