@@ -1,5 +1,9 @@
 {
+    "name": "clicalmani/tonka",
+    "description": "Tonka framework",
+    "type": "framework",
     "require": {
+        "php": ">=8.0",
         "clicalmani/flesco": ">=1.0",
         "clicalmani/xpower": ">=1.2.0",
         "clicalmani/container": ">=1.0",
@@ -8,8 +12,15 @@
         "clicalmani/routes": ">=1.0",
         "clicalmani/collection": ">=1.0"
     },
+    "license": "proprietary",
     "require-dev": {
         "phpunit/phpunit": "^9.5",
 		"symfony/console": "^6.3"
-    }
+    },
+    "authors": [
+        {
+            "name": "clicalmani",
+            "email": "clicalmani@gmail.com"
+        }
+    ],
 }
