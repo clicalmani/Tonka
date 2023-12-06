@@ -1,3 +1,0 @@
-#!/usr/bin/env php
-<?php
-symlink('E:/pdmsv2/storage/uploads', 'E:/pdmsv2/public/uploads');

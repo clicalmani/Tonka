@@ -12,6 +12,21 @@ use Clicalmani\Routes\Route;
 |
 */
 
+// Home
 Route::get('/', function() {
-    return view('home', ['name' => 'Enter your name']);
+    return redirect()->route('login');
+});
+
+// Login
+Route::get('login', function() {
+    return view('login', ['csrf' => csrf()]);
+});
+
+// 404
+Route::get('404', function() {
+    return view('home');
+});
+
+Route::post('auth', function() {
+    echo '<pre>'; print_r(request()); echo '</pre>';
 });

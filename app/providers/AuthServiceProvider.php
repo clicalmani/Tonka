@@ -6,14 +6,9 @@ use Clicalmani\Database\DB;
 
 class AuthServiceProvider extends Authenticate
 {
-	/**
-	 * Database instance
-	 * 
-	 * @var \Clicalmani\Database\DBQuery
-	 */
 	protected $db;
 
-    public function __construct(mixed $user_id = null)
+    public function __construct(protected $user_id = null)
     {
         parent::__construct( $user_id );
 		$this->db = DB::getInstance();
@@ -23,35 +18,37 @@ class AuthServiceProvider extends Authenticate
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetExists()
 	 */
-	public function offsetExists(mixed $matricule) : bool
+	public function offsetExists(mixed $user_id) : bool
 	{ 
-		return true;
+		// ...
+		
+		return false;
 	}
 	 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetGet()
 	 */
-	public function offsetGet(mixed $username) : mixed
+	public function offsetGet(mixed $user_id) : mixed
 	{ 
-		//
+		// ...
 	}
 	 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetSet()
 	 */
-	public function offsetSet(mixed $username, mixed $new_status) : void
+	public function offsetSet(mixed $user_id, mixed $value) : void
 	{
-		//
+		//...
 	}
 	 
 	/**
 	 * (non-PHPdoc)
 	 * @see ArrayAccess::offsetUnset()
 	 */
-	public function offsetUnset($username) : void
+	public function offsetUnset(mixed $user_id) : void
 	{
-		//
+		// ...
 	}
 }

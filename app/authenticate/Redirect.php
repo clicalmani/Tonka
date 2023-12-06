@@ -2,6 +2,7 @@
 namespace App\Authenticate;
 
 use Clicalmani\Flesco\Providers\TPS;
+use Clicalmani\Routes\Route;
 
 /**
  * Route redirect
@@ -31,9 +32,7 @@ class Redirect extends TPS
         /**
          * On API request just set route property value to redirect
          */
-        // $this->route = '/404';
-
-        // Web routing
-        $this->request->redirect()->route('/404');
+        if (Route::isApi()) $this->route = '/404';
+        else $this->request->redirect()->route('/404');
     }
 }

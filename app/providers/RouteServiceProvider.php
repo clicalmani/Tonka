@@ -22,22 +22,22 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->routes(function() {
             if ( Route::isApi() ) {
-                Route::group(function() { require_once root_path( $this->api_handler ); })
+                Route::group(fn() => require_once root_path( $this->api_handler ) )
                     ->prefix( $this->api_prefix )
                     ->middleware('api');
             } else require_once root_path( $this->web_handler );
         });
     }
 
-    /**
-     * Service handler
-     * 
-     * @return void
-     */
-    public function handler(): void
+    public function register(): void
     {
         ServiceProvider::responseHandler(fn(mixed $user) => [
             // Data
         ]);
+
+        /**
+         * Global patterns
+         */
+        Route::pattern('id', '[0-9]+');
     }
 }

@@ -2,27 +2,36 @@
 namespace App\Http\Middlewares;
 
 use Clicalmani\Flesco\Http\Middlewares\Middleware;
+use Clicalmani\Flesco\Http\Requests\Request;
+use Clicalmani\Flesco\Http\Response\Response;
 
 class Authenticate extends Middleware 
 {
     /**
      * Handler
      * 
-     * @return string
+     * @param Request $request Current request object
+     * @param Response $response Http response
+     * @param callable $next 
+     * @return int|false
      */
-    public function handler() : string
+    public function handle(Request $request, Response $response, callable $next) : int|false
     {
-        return routes_path( '/auth.php' );
+        if ($user = $request->user()) {
+            if (false === $user->isOnline()) return $response->unauthorized();
+            else $user->authenticate();
+        }
+
+        return $next();
     }
 
     /**
-     * Authorize
+     * Bootstrap
      * 
-     * @param mixed $data
-     * @return bool
+     * @return void
      */
-    public function authorize(mixed $data) : bool
+    public function boot() : void
     {
-        return true;
+        $this->include('auth');
     }
 }
