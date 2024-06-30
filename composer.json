@@ -26,6 +26,6 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "minimum-stability": "beta",
+    "prefer-stable": false
 }
