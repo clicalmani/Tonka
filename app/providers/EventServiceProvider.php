@@ -1,8 +1,6 @@
 <?php
 namespace App\Providers;
 
-use App\Events\GenerateDecreeListener;
-use App\Events\NotifyAbsenceListener;
 use Clicalmani\Fundation\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -14,8 +12,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
-        $this->createEvent('leave:generate-decree');
-        $this->createEvent('user:notify-absence');
+        // ...
     }
 
     /**
@@ -25,7 +22,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->addListener('leave:generate-decree', GenerateDecreeListener::class);
-        $this->addListener('user:notify-absence', NotifyAbsenceListener::class);
+        // ...
     }
 }
