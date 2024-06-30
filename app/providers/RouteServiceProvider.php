@@ -1,8 +1,8 @@
 <?php
 namespace App\Providers;
 
-use Clicalmani\Flesco\Providers\RouteServiceProvider as ServiceProvider;
-use Clicalmani\Routes\Route;
+use Clicalmani\Fundation\Providers\RouteServiceProvider as ServiceProvider;
+use Clicalmani\Fundation\Routing\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {

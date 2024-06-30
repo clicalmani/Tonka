@@ -8,7 +8,7 @@ return [
      * 
      */
     'web' => [
-        'authenticator' => App\Http\Middlewares\Authenticate::class,
+        //
     ],
 
     /**
@@ -18,7 +18,18 @@ return [
      * 
      */
     'api' => [ 
-        'api' => App\Http\Middlewares\AuthApi::class,
-        'jwtauth' => App\Http\Middlewares\Auth::class
+        'api' => App\Http\Middlewares\Auth::class,
+        'tokenizer' => App\Http\Middlewares\Tokenizer::class,
+    ],
+
+    /**
+     * |-------------------------------------------------------------------
+     * |                          Validators
+     * |-------------------------------------------------------------------
+     * 
+     * Custom validators
+     */
+    'validators' => [
+        // ...
     ]
 ];

@@ -3,30 +3,17 @@ $uri = urldecode(
     parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH)
 );
 
-/**
- * Assets requests
- */
 if ($uri !== '/' && file_exists(__DIR__.'/public'.$uri)) {
 
-    // Common web files mime types
-    $mime_types = [
-        'css' => 'text/css',
-        'js'  => 'application/javascript'
-    ];
-
-    $file = __DIR__.'/public' . $uri;
-    $ext  = substr($file, strpos($file, '.') + 1);
-    $mime_type = array_key_exists($ext, $mime_types) ? $mime_types[$ext]: mime_content_type($file);
-
     /**
-     * Set headers
-     * 
-     * Only content type is needed the remaining headers will be guest by the browser
+     * This line has been tested and work on development
+     * Not tested on production. May be it should be commented on production
+     * because there is a try and catch which did the same thing in public/index.php. 
+     * If there is no conflict we can keep it.
      */
-    header('Content-Type: ' . $mime_type);
-
-    // Render the requested file
-    include_once $file;
+    $file = __DIR__.'/public' . $uri;
+    header('Content-Type: ' . mime_content_type($file)); // Only content type is needed the remaining headers will be guest by the browser
+    include $file;
 
     // We should exit to end the file transfer process
     exit;

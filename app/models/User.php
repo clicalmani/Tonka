@@ -1,7 +1,7 @@
 <?php 
 namespace App\Models;
 
-use Clicalmani\Flesco\Models\Model;
+use Clicalmani\Database\Factory\Models\Model;
 
 class User extends Model
 {
@@ -13,14 +13,27 @@ class User extends Model
     protected $table = "user";
 
     /**
-     * Table primary key(s)
-     *
-     * @var string|array $primary_keys Table primary key. Use an array if the key is composed with more than one attributes.
+     * Model entity
+     * 
+     * @var string
      */
-    protected $primaryKey = "";
+    protected string $entity = \Database\Entities\UserEntity::class;
 
-    function __construct( $id = null )
+    /**
+     * Table primary key(s)
+     * Use an array if the key is composed with more than one attributes.
+     *
+     * @var string|array $primary_keys Table primary key.
+     */
+    protected $primaryKey = "user_id";
+
+    /**
+     * Constructor 
+     *
+     * @param mixed $id
+     */
+    public function __construct(mixed $id = null)
     {
-        parent::__construct( $id );
+        parent::__construct($id);
     }
 }

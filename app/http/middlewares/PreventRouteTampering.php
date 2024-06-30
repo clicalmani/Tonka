@@ -5,7 +5,7 @@ use Clicalmani\Fundation\Http\Middlewares\Middleware;
 use Clicalmani\Fundation\Http\Requests\Request;
 use Clicalmani\Fundation\Http\Response\Response;
 
-class Auth extends Middleware 
+class PreventRouteTampering extends Middleware 
 {
     /**
      * Handler
@@ -17,9 +17,10 @@ class Auth extends Middleware
      */
     public function handle(Request $request, Response $response, callable $next) : int|false
     {
-        /**
-         * TODO
-         */
+        if ($request->hash && false == $request->verifyParameters()) {
+            return $response->unauthorized();
+        }
+
         return $next();
     }
 
@@ -30,6 +31,6 @@ class Auth extends Middleware
      */
     public function boot() : void
     {
-        $this->include('api');
+        // ...
     }
 }

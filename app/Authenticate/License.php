@@ -1,8 +1,7 @@
 <?php 
 namespace App\Authenticate;
 
-use Clicalmani\Flesco\Providers\TPS;
-use Clicalmani\Routes\Route;
+use Clicalmani\Fundation\Providers\RouteTPS;
 
 /**
  * Route redirect
@@ -10,7 +9,7 @@ use Clicalmani\Routes\Route;
  * @package clicalmani/flesco 
  * @author @clicalmani
  */
-class Redirect extends TPS
+class License extends RouteTPS
 {
     public function __construct(protected &$route)
     {
@@ -32,7 +31,7 @@ class Redirect extends TPS
         /**
          * On API request just set route property value to redirect
          */
-        if (Route::isApi()) $this->route = '/404';
-        else $this->request->redirect()->route('/404');
+        // if (Route::isApi()) $this->route = '/404';
+        // else $this->request->redirect()->route('/404');
     }
 }

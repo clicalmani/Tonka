@@ -6,25 +6,15 @@ return [
      * |                Authentication Service Provider
      * |--------------------------------------------------------------------
      * 
-     * User authentication
+     * User authenticator
      */
     'auth' => [
-        'user' => App\Authenticate\User::class
+        'user' => App\Authenticate\UserAuth::class
     ],
 
     /**
      * |-------------------------------------------------------------------
-     * |                        Helper Services
-     * |-------------------------------------------------------------------
-     * 
-     */
-    'helpers' => [
-        //
-    ],
-
-    /**
-     * |-------------------------------------------------------------------
-     * |                      Third Party Services
+     * |                      Route Third Party Services
      * |-------------------------------------------------------------------
      * 
      */
@@ -32,12 +22,12 @@ return [
 
         /**
          * |-------------------------------------------------------------------
-         * |                    Route Third Party Services
+         * |                    Request Third Party Services
          * |-------------------------------------------------------------------
          * 
          */
         [
-            \App\Authenticate\Redirect::class
+            // ...
         ],
 
         /**
