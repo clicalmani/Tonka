@@ -7,8 +7,14 @@ use Clicalmani\Fundation\Auth\AuthServiceProvider;
 abstract class Authenticator
 {
 	/**
-	 * Max session inactivity time in minutes.
-     * default to one day.
+	 * Token expiry in days
+	 * 
+	 * @var int
+	 */
+	protected int $expiry = 1;
+
+	/**
+	 * Max session inactivity time in minutes
 	 * 
 	 * @var int
 	 */
@@ -17,7 +23,7 @@ abstract class Authenticator
 	/**
 	 * Authenticated user
 	 * 
-	 * @var mixed
+	 * @var \App\Models\User
 	 */
 	protected $user;
 
@@ -27,6 +33,20 @@ abstract class Authenticator
 	 * @var \Clicalmani\Fundation\Auth\AuthServiceProvider
 	 */
 	private $auth;
+
+	/**
+	 * Token
+	 * 
+	 * @var string
+	 */
+	private $token;
+
+	/**
+	 * Payload
+	 * 
+	 * @var array
+	 */
+	private $payload;
 	 
 	/**
 	 * Constructor
@@ -40,9 +60,15 @@ abstract class Authenticator
 
 		/**
 		 * Set user to user model
+		 * 
+		 * @var \App\Models\User
 		 */
-		$this->user  = \App\Models\User::find($this->user_id);
-		$this->auth = new AuthServiceProvider($this->user_id, $this->turnarround ? $this->turnarround/(60*24): 1); // Default to one day token expiry
+		$this->user = \App\Models\User::find($this->user_id);
+		$this->auth = new AuthServiceProvider($this->user_id, $this->expiry);
+		$this->token = @DB::table('auth_access')->where('user_id = :id', ['id' => $this->user_id])->get('token')->first()['token'] ?? '';
+		
+		if ($this->auth->verifyToken($this->token)['iat'] + $this->turnarround/60 > time()) 
+			@DB::table('auth_access')->where('user_id = :id', ['id' => $this->user_id])->delete();
 	}
 	
 	/**
@@ -64,10 +90,9 @@ abstract class Authenticator
 	public function authenticate() : void
 	{
 		DB::table('auth_access')
-			->where('user_id = :user', 'AND', ['user' => (int) $this->user_id])
-			->insertOrUpdate([
+			->insert([
 				['user_id' => $this->user_id, 'token' => $this->auth->generateToken()]
-			]);
+			], true);
 	}
 
 	/**
@@ -77,8 +102,7 @@ abstract class Authenticator
 	 */
 	public function isOnline() : bool
 	{
-		$auth = DB::table('auth_access')->where('user_id = :user_id', 'AND', ['user_id' => $this->user_id])->get('token')->first();
-		if ($auth && $this->auth->verifyToken($auth['token'])) return true;
+		if ($this->auth->verifyToken($this->token)) return true;
 
 		return false;
 	}

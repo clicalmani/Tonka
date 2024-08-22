@@ -42,6 +42,27 @@ return [
     'fallback_locale' => 'en',
 
     /*
+    |---------------------------------------------------------------------------
+    | JSON 
+    |---------------------------------------------------------------------------
+    | 
+    | This settings instruct how to encode and decode json string and convert it 
+    | into a PHP value.
+    */
+
+    'json' => [
+        'encode' => [
+            'flags' => JSON_UNESCAPED_UNICODE,
+            'depth' => 512
+        ],
+        'decode' => [
+            'associative' => true,
+            'depth' => 512,
+            'flags' => JSON_PRESERVE_ZERO_FRACTION | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK
+        ]
+    ],
+
+    /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
@@ -69,6 +90,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\SessionServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\EventServiceProvider::class,
